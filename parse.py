@@ -4,7 +4,6 @@ sys.path.append("external/")
 
 from pycparser import c_parser
 from pycparser.c_ast import *
-import compiler
 
 def makelst(l):
     if type(l) == type(tuple()):
