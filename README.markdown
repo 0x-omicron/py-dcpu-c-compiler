@@ -1,4 +1,4 @@
-=Py-DCPU-C=
+# Py-DCPU-C #
 This is a simple C compiler which builds DCPU-16 bytecode from a subset of
 ANSI C. 
 
@@ -22,7 +22,7 @@ Notably, the following features are lacking:
 
 Parsing is done through the pycparser (http://code.google.com/p/pycparser/).
 
-==Usage==
+## Usage ##
 python compiler.py [-n] [-d] [-o outputfile] inputfile
 
 where
@@ -35,7 +35,7 @@ The output is the instructions, as base-16 encoded words separated by spaces.
 When running any file, the return from main is placed in register I.
 
 
-==Example==
+## Example ##
 
 ```C
 int main() {
@@ -47,7 +47,7 @@ int main() {
 
 After running the output through a disassembler, here is what we get:
 
-```dcpu16
+```dasm16
 0x0000:
     JSR 0x04                     ; Jump to the main method
 0x0004:
