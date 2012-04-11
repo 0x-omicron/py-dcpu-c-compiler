@@ -2,14 +2,14 @@
 This is a simple C compiler which builds DCPU-16 bytecode from a subset of
 ANSI C. 
 
-It currently Py-DCPU-16 supports the following features of C:
+It currently supports the following features of C:
 
 ```
  + Recursion
  + Pointers
  + Flow control (if/while/for)
  + Heap allocated strings
- + local variables
+ + Local variables
  + Global variables
 ```
 
