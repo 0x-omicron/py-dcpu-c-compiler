@@ -55,10 +55,13 @@ def convert(ast):
     elif isinstance(ast, FuncCall):
         if ast.name.name == '__print':
             return ('PRINT', convert(ast.args.children()[0][1]))
-        if ast.name.name == '__putchar':
+
+        elif ast.name.name == '__putchar':
             return ('PUTCHAR', convert(ast.args.children()[0][1]))
-        return ('CALL', ("VAR", ast.name.name),
-                [convert(x[1]) for x in ast.args.children()])
+
+        else:
+            return ('CALL', ("VAR", ast.name.name),
+                    [convert(x[1]) for x in ast.args.children()])
 
     elif isinstance(ast, ID):
         return ('VAR', ast.name)
