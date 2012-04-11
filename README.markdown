@@ -3,23 +3,25 @@ This is a simple C compiler which builds DCPU-16 bytecode from a subset of
 ANSI C. 
 
 It currently Py-DCPU-16 supports the following features of C:
-   - Recursion
-   - Pointers
-   - Flow control (if/while/for)
-   - Heap allocated strings
-   - local variables
-   - Global variables
-
+```
+ - Recursion
+ - Pointers
+ - Flow control (if/while/for)
+ - Heap allocated strings
+ - local variables
+ - Global variables
+```
 Notably, the following features are lacking:
-   - Error handling: invalud code causes compiler crashes with no errors.
-   - Any type checking what-so-ever.
-   - Structs.
-   - Function pointers.
-   - Stack arrays.
-   - Built-in library
-   - Preprocessor
-   - Inline assembly
-
+```
+ - Error handling: invalud code causes compiler crashes with no errors.
+ - Any type checking what-so-ever.
+ - Structs.
+ - Function pointers.
+ - Stack arrays.
+ - Built-in library
+ - Preprocessor
+ - Inline assembly
+```
 Parsing is done through the pycparser (http://code.google.com/p/pycparser/).
 
 ## Usage ##
