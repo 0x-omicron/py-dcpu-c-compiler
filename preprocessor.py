@@ -75,8 +75,12 @@ def r_macro_expander(lines, offset, define_table, define_set,
             elif(kwrd == 'DEFINE'):
                 # define case
                 m, r = parse_define(val)
-                r = (r if r else 'b840871a03c1504cce5ef769afc83e7a')
-                define_table.append((m, r))
+                if r:
+                    # r is None if there is no definition for a replacement
+                    # string. This way symbolic #defines will __never__ get
+                    # expressed in the c code even if the name should have
+                    # been matched by the expander.
+                    define_table.append((m, r))
                 define_set.add(m)
 
             elif(kwrd == 'UNDEF'):
