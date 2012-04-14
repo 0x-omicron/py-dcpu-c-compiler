@@ -196,8 +196,6 @@ def process(text, targetpath):
     output_lines, replacements = r_macro_expander(text_lines, 0, [], set(),
                                                   [], scanner)
 
-    print output_lines
-
     output_lines = apply_replacements(output_lines, replacements)
 
     return '\n'.join(output_lines)
