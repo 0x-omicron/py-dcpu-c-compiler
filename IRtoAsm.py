@@ -99,7 +99,7 @@ def toasm(prog, args=[], globFuncs={}, globVars={}, relativepos=0, DEBUG=False):
     if DEBUG: pprint(prog)
 
     def add(it, idents):
-        if type(it) == type(str):
+        if type(it) == str:
             if it not in idents and it not in args:
                 if it not in globVars and it not in globFuncs:
                     idents[it] = len(idents)
@@ -109,7 +109,7 @@ def toasm(prog, args=[], globFuncs={}, globVars={}, relativepos=0, DEBUG=False):
     for instr in prog:
         for each in getVarLocations(instr):
             add(each, idents)
-            if type(each) != type(str):
+            if type(each) != str:
                 continue
 
             elif each not in occurances:
@@ -165,7 +165,7 @@ def toasm(prog, args=[], globFuncs={}, globVars={}, relativepos=0, DEBUG=False):
         def doone(asis, ab):
             if asis:
                 how = ab
-            elif type(ab) == type(str):
+            elif type(ab) == str:
                 if ab in globFuncs:
                     how = NXTWD
                     extra.append(globFuncs[ab])
@@ -187,7 +187,7 @@ def toasm(prog, args=[], globFuncs={}, globVars={}, relativepos=0, DEBUG=False):
                         how = DEREFPLUS + J
                         extra.append(idents[ab])
 
-            elif type(ab) == type(int):
+            elif type(ab) == int:
                 if ab <= 0x3F:
                     how = LITSMALL + ab
 
