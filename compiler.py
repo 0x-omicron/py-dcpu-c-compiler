@@ -1,10 +1,11 @@
 #!/usr/bin/python
 import sys
 
-from .parse import parse
-from .IRtoAsm import toasm, tobytes
-from .optimize import optimizeStmts
-from .astrepr import *
+from parse import parse
+from IRtoAsm import toasm, tobytes
+from optimize import optimizeStmts
+from astrepr import *
+from preprocessor import process
 
 DEBUG = False
 OPTIMIZE = True
@@ -205,7 +206,8 @@ def comp(prog):
     return res, heap
 
 
-def run(prog, debug=False):
+def run(prog, path, debug=False):
+    prog = process(prog, path)
     prog = parse(prog, debug)
     prog, heap = comp(prog)
 
@@ -224,7 +226,7 @@ if __name__ == "__main__":
               '   -o outfile writes the output to the given file' +\
         exit(0)
 
-    elif len(sys.argv > 1):
+    elif len(sys.argv) > 1:
         i = 1
         fname = None
         while i != (len(sys.argv) - 1):
@@ -242,7 +244,7 @@ if __name__ == "__main__":
             fname = 'a.out'
 
         prog = open(sys.argv[i]).read()
-        res = run(prog)
+        res = run(prog, sys.argv[i])
 
         if DEBUG:
             print " ".join(a)
